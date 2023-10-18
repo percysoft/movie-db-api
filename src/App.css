@@ -1,5 +1,14 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 .App {
   text-align: center;
+  padding: 3%;
+}
+
+body {
+  background: #143f86;
 }
 
 .App-logo {
