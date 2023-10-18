@@ -1,4 +1,9 @@
-import { CardContainer, CardImage, CardTitle } from "./index.style";
+import {
+  CardContainer,
+  CardImage,
+  CardSubTitle,
+  CardTitle,
+} from "./index.style";
 
 interface IICardComponent {
   title: string;
@@ -17,7 +22,7 @@ export const CardComponent = ({
     <CardContainer onClick={handleCard}>
       <CardImage src={imageUrl} alt="card" />
       <CardTitle>{title}</CardTitle>
-      {subtitle && <span>{subtitle}</span>}
+      {subtitle && <CardSubTitle>{subtitle}</CardSubTitle>}
     </CardContainer>
   );
 };

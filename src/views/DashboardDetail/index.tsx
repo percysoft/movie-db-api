@@ -24,13 +24,14 @@ export const DashboardDetailComponent = () => {
         <>
           <h2>User Details</h2>
           <p>User ID: {id}</p>
-          <span>{dataForDetail.original_title}</span>
-          <span>{dataForDetail.overview}</span>
-          <span>{dataForDetail.release_date}</span>
+          <span>{dataForDetail?.original_title}</span>
+          <span>{dataForDetail?.overview}</span>
+          <span>{dataForDetail?.release_date}</span>
           <div>
             <ul>
               {dataForDetail &&
-                dataForDetail.genres.map((item: any) => {
+                dataForDetail.genres &&
+                dataForDetail?.genres.map((item: any) => {
                   return <li>{item.name}</li>;
                 })}
             </ul>
@@ -40,7 +41,7 @@ export const DashboardDetailComponent = () => {
               width: "440px",
               height: "300px",
             }}
-            src={`https://image.tmdb.org/t/p/original/${dataForDetail.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/original/${dataForDetail?.backdrop_path}`}
           />
         </>
       )}

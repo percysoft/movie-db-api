@@ -1,19 +1,36 @@
-import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
+import { useState } from "react";
+import DatePicker, { ReactDatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Container, Title } from "./index.style";
 
-export const DateComponent = ({ getValue }: any) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+interface IIDateComponent {
+  label?: string;
+  getValue: (value: Date | null) => void;
+  placeholder?: string;
+}
 
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
-    getValue(date);
+export const DateComponent = ({
+  label = "Seleccionar fecha",
+  getValue,
+  placeholder='Fecha'
+}: IIDateComponent) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  const handleDateChange: ReactDatePickerProps["onChange"] = (date) => {
+    if (date instanceof Date) {
+      setSelectedDate(date);
+      getValue(date);
+    }
   };
 
   return (
-    <div>
-      <h2>Select a Date</h2>
-      <DatePicker selected={selectedDate} onChange={handleDateChange} />
-    </div>
+    <Container>
+      <Title>{label}</Title>
+      <DatePicker
+        selected={selectedDate}
+        onChange={handleDateChange}
+        placeholderText={placeholder}
+      />
+    </Container>
   );
 };

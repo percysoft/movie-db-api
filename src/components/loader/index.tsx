@@ -7,7 +7,7 @@ export const LoadingComponent = ({ loading }: IILoader) => {
   return (
     <>
       {loading && (
-        <Container>
+        <Container data-testid="loading-container">
           <LoadingOverlay>
             <LoadingSpinner />
           </LoadingOverlay>
