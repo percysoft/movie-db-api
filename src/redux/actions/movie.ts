@@ -6,6 +6,9 @@ import {
   GET_MOVIE_QUERY_SUCCESS,
   GET_MOVIE_QUERY_ERROR,
   CLEAR_DATA_QUERY,
+  GET_DETAIL_MOVIE_REQUEST,
+  GET_DETAIL_MOVIE_SUCCESS,
+  GET_DETAIL_MOVIE_ERROR,
 } from "../types/movie";
 
 export const getMovieRequest = (value: number) => ({
@@ -36,6 +39,21 @@ export const getMovieForIdSuccess = (data: any) => ({
 
 export const getMovieForIdFailure = (error: any) => ({
   type: GET_MOVIE_QUERY_ERROR,
+  errorPaylod: error,
+});
+
+export const getMovieDetailRequest = (value: number) => ({
+  type: GET_DETAIL_MOVIE_REQUEST,
+  payload: value,
+});
+
+export const getMovieDetailSuccess = (data: any) => ({
+  type: GET_DETAIL_MOVIE_SUCCESS,
+  payload: data,
+});
+
+export const getMovieDetailFailure = (error: any) => ({
+  type: GET_DETAIL_MOVIE_ERROR,
   errorPaylod: error,
 });
 

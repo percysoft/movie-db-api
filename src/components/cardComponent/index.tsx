@@ -1,10 +1,23 @@
 import { CardContainer, CardImage, CardTitle } from "./index.style";
 
-export const CardComponent = ({ title, imageUrl }: any) => {
+interface IICardComponent {
+  title: string;
+  imageUrl: string;
+  handleCard?: () => void;
+  subtitle?: string;
+}
+
+export const CardComponent = ({
+  title,
+  imageUrl,
+  handleCard,
+  subtitle,
+}: IICardComponent) => {
   return (
-    <CardContainer>
+    <CardContainer onClick={handleCard}>
       <CardImage src={imageUrl} alt="card" />
       <CardTitle>{title}</CardTitle>
+      {subtitle && <span>{subtitle}</span>}
     </CardContainer>
   );
 };

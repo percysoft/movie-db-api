@@ -1,61 +1,59 @@
-import * as actions from "../types/movie";
+import * as actions from "../types/tvShows";
 
 interface IInitialState {
   loading: boolean;
   data: any;
   dataForQuery: any;
-  dataForDetail: any;
   error: boolean;
 }
 const initialState: IInitialState = {
   loading: false,
   data: [],
   dataForQuery: [],
-  dataForDetail: [],
   error: false,
 };
 
-export default function MovieReducer(
+export default function TvShowsReducer(
   state: IInitialState = initialState,
   action: any
 ) {
   switch (action.type) {
-    case actions.GET_MOVIE_REQUEST:
+    case actions.GET_TV_SHOWS_REQUEST:
       return {
         ...state,
         loading: true,
         error: false,
       };
 
-    case actions.GET_MOVIE_SUCCESS:
+    case actions.GET_TV_SHOWS_SUCCESS:
       return {
         ...state,
         loading: false,
         data: action.payload,
         error: false,
       };
-    case actions.GET_MOVIE_ERROR:
+    case actions.GET_TV_SHOWS_ERROR:
       return {
         ...state,
         loading: false,
         data: [],
         error: false,
       };
-    case actions.GET_MOVIE_QUERY_REQUEST:
+    case actions.GET_TV_FOR_QUERY_SHOWS_REQUEST:
       return {
         ...state,
         loading: true,
         error: false,
       };
 
-    case actions.GET_MOVIE_QUERY_SUCCESS:
+    case actions.GET__FOR_QUERY_TV_SHOWS_SUCCESS:
       return {
         ...state,
         loading: false,
         dataForQuery: action.payload,
         error: false,
       };
-    case actions.GET_MOVIE_QUERY_ERROR:
+    case actions.GET_TV__FOR_QUERY_SHOWS_ERROR:
       return {
         ...state,
         loading: false,
@@ -63,33 +61,12 @@ export default function MovieReducer(
         error: false,
       };
 
-    case actions.GET_DETAIL_MOVIE_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: false,
-      };
-
-    case actions.GET_DETAIL_MOVIE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        dataForDetail: action.payload,
-        error: false,
-      };
-    case actions.GET_DETAIL_MOVIE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        dataForDetail: [],
-        error: false,
-      };
-
-    case actions.CLEAR_DATA_QUERY:
+      case actions.CLEAR_DATA_QUERY:
       return {
         ...state,
         dataForQuery: [],
       };
+
     default:
       return state;
   }

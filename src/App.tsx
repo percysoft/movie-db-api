@@ -1,15 +1,14 @@
+import { useRoutes } from "react-router-dom";
+import { routes } from "./routes";
 import "./App.css";
-import { Provider } from "react-redux";
-import { MovieComponent } from "./views/Dashboard";
-import configureStore from "./redux/configurestore";
 
 function App() {
+  const routing = useRoutes(routes);
+
   return (
-    <Provider store={configureStore}>
-      <div className="App">
-        <MovieComponent />
-      </div>
-    </Provider>
+    <div>
+      <>{routing}</>
+    </div>
   );
 }
 
