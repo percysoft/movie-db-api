@@ -5,6 +5,7 @@ import {
   GET_MOVIE_QUERY_REQUEST,
   GET_MOVIE_QUERY_SUCCESS,
   GET_MOVIE_QUERY_ERROR,
+  CLEAR_DATA_QUERY,
 } from "../types/movie";
 
 export const getMovieRequest = (value: number) => ({
@@ -36,4 +37,8 @@ export const getMovieForIdSuccess = (data: any) => ({
 export const getMovieForIdFailure = (error: any) => ({
   type: GET_MOVIE_QUERY_ERROR,
   errorPaylod: error,
+});
+
+export const clearDataQuery = () => ({
+  type: CLEAR_DATA_QUERY,
 });

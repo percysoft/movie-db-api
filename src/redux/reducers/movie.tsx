@@ -61,6 +61,11 @@ export default function MovieReducer(
         error: false,
       };
 
+    case actions.CLEAR_DATA_QUERY:
+      return {
+        ...state,
+        dataForQuery: [],
+      };
     default:
       return state;
   }

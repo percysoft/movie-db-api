@@ -6,6 +6,7 @@ import { GridCards } from "./components/gridCards";
 import { useInfiniteScroll } from "./components/hook/useScrollInfinite";
 import { Container } from "./index.style";
 import { useFetchMovie } from "./components/hook/useMovie";
+import { clearDataQuery } from "../../redux/actions/movie";
 
 export const MovieComponent = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const MovieComponent = () => {
   });
 
   const getValueInput = (e: string) => {
+    dispatch(clearDataQuery());
     setPage(1);
     setValueInputMovie(e);
   };

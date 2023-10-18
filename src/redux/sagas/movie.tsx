@@ -52,19 +52,19 @@ export function* getMovieForQuery(
   try {
     const response = yield call(
       axiosInstanceService.get,
-      `/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=search/movie?&query=${value}`
+      `/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=search/movie?&query=${value}&page=${page}`
     );
     const currentResults: any[] = yield select(
       (state: any) => state.movie.dataForQuery
     );
     console.log(currentResults, "currentResultscurrentResults");
-    // if (currentResults.length == 0) {
-    yield put(getMovieForIdSuccess(response.data.results));
-    // } else {
-    //   const newResults: any[] = response.data.results;
-    //   const updatedResults = currentResults.concat(newResults);
-    //   yield put(getMovieForIdSuccess(updatedResults));
-    // }
+    if (currentResults.length == 0) {
+      yield put(getMovieForIdSuccess(response.data.results));
+    } else {
+      const newResults: any[] = response.data.results;
+      const updatedResults = currentResults.concat(newResults);
+      yield put(getMovieForIdSuccess(updatedResults));
+    }
   } catch (error) {
     const err = error as AxiosError;
     yield delay(3500);
