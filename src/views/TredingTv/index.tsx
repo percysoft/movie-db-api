@@ -17,7 +17,7 @@ export const TrendingTvComponent = () => {
   const { tvShows } = useSelector((state: any) => state);
 
   const [page, setPage] = useState(1);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
   const [data, setData] = useState([]);
 
   useEffect(() => {
