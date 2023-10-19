@@ -90,6 +90,12 @@ export default function MovieReducer(
         ...state,
         dataForQuery: [],
       };
+
+      case actions.CLEAR_DATA_DETAIL:
+      return {
+        ...state,
+        dataForDetail: [],
+      };
     default:
       return state;
   }

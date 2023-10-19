@@ -13,13 +13,14 @@ export const ContainerButonOption = styled.button`
 `;
 
 interface ButtonOptionProps {
-    active: boolean;
-  }
-  
+  active: boolean;
+}
+
 export const ButtonOption = styled.button<ButtonOptionProps>`
-  color: ${COLORS.WHITE};
+  color: ${COLORS.BLACK};
   font-size: 1.2rem;
   padding: 10px;
   margin: 0;
-  border-bottom: ${(props) => (props.active ? `3px solid ${COLORS.WHITE}` : "none")};
+  border-bottom: ${(props) =>
+    props.active ? `3px solid ${COLORS.BLACK}` : "none"};
 `;

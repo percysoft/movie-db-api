@@ -3,6 +3,8 @@ import {
   CardImage,
   CardSubTitle,
   CardTitle,
+  ContainerCardImage,
+  ContainerInfo,
 } from "./index.style";
 
 interface IICardComponent {
@@ -20,9 +22,13 @@ export const CardComponent = ({
 }: IICardComponent) => {
   return (
     <CardContainer onClick={handleCard}>
-      <CardImage src={imageUrl} alt="card" />
-      <CardTitle>{title}</CardTitle>
-      {subtitle && <CardSubTitle>{subtitle}</CardSubTitle>}
+      <ContainerCardImage>
+        <CardImage src={imageUrl} alt="card" />
+      </ContainerCardImage>
+      <ContainerInfo>
+        {title && <CardTitle>{title}</CardTitle>}
+        {subtitle && <CardSubTitle>{subtitle}</CardSubTitle>}
+      </ContainerInfo>
     </CardContainer>
   );
 };

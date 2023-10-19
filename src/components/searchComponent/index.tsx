@@ -7,6 +7,7 @@ interface ISearchComponent {
   textButton?: string;
   handleButton: () => void;
   getValue: (value: string) => void;
+  showButton?: boolean;
 }
 export const SearchComponent = ({
   type = "text",
@@ -14,6 +15,7 @@ export const SearchComponent = ({
   textButton = "Buscar",
   handleButton = () => {},
   getValue,
+  showButton = false,
 }: ISearchComponent) => {
   const [searchInput, setSearchInput] = useState("");
 
@@ -28,7 +30,9 @@ export const SearchComponent = ({
           getValue(e.target.value);
         }}
       />
-      <SearchButton onClick={handleButton}>{textButton}</SearchButton>
+      {showButton && (
+        <SearchButton onClick={handleButton}>{textButton}</SearchButton>
+      )}
     </SearchContainer>
   );
 };

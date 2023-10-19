@@ -18,8 +18,9 @@ export const DashboardComponent = () => {
   const [valueInputMovie, setValueInputMovie] = useState("");
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
+  const [timer, setTimer] = useState<NodeJS.Timeout>();
 
-  useFetchMovie(dispatch, page, valueInputMovie);
+  useFetchMovie(dispatch, page, valueInputMovie, setValueInputMovie);
   useInfiniteScroll(() => {
     if (!movie.loading && !movie.error) {
       setPage((prevState) => prevState + 1);
@@ -27,9 +28,18 @@ export const DashboardComponent = () => {
   });
 
   const getValueInput = (e: string) => {
-    dispatch(clearDataQuery());
-    setPage(1);
-    setValueInputMovie(e);
+    if (timer) {
+      clearTimeout(timer);
+    }
+    const delayDebounceFn = setTimeout(() => {
+      dispatch(clearDataQuery());
+      setPage(1);
+      setValueInputMovie(e);
+    }, 500);
+
+    setTimer(delayDebounceFn);
+
+    return () => clearTimeout(delayDebounceFn);
   };
 
   useEffect(() => {

@@ -9,6 +9,7 @@ import {
   GET_DETAIL_MOVIE_REQUEST,
   GET_DETAIL_MOVIE_SUCCESS,
   GET_DETAIL_MOVIE_ERROR,
+  CLEAR_DATA_DETAIL,
 } from "../types/movie";
 
 export const getMovieRequest = (value: number) => ({
@@ -60,3 +61,8 @@ export const getMovieDetailFailure = (error: any) => ({
 export const clearDataQuery = () => ({
   type: CLEAR_DATA_QUERY,
 });
+
+export const clearDataDetail = () => ({
+  type: CLEAR_DATA_DETAIL,
+});
+

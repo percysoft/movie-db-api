@@ -12,7 +12,7 @@ interface IIDateComponent {
 export const DateComponent = ({
   label = "Seleccionar fecha",
   getValue,
-  placeholder='Fecha'
+  placeholder = "YYYY-MM-DD",
 }: IIDateComponent) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
@@ -22,7 +22,6 @@ export const DateComponent = ({
       getValue(date);
     }
   };
-
   return (
     <Container>
       <Title>{label}</Title>

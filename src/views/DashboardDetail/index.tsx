@@ -3,11 +3,19 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetailRequest } from "../../redux/actions/movie";
 import { ErrorComponent } from "../../components/errorComponent";
+import {
+  Container,
+  ContainerGender,
+  ContainerImg,
+  ContainerInfo,
+  SpanDetail,
+} from "./index.style";
+import { LoadingComponent } from "../../components/loader";
 
 export const DashboardDetailComponent = () => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state: any) => state);
-  const { dataForDetail } = movie;
+  const { dataForDetail, loading } = movie;
 
   const params = useParams();
   const { id } = params;
@@ -21,29 +29,30 @@ export const DashboardDetailComponent = () => {
       {movie.error ? (
         <ErrorComponent />
       ) : (
-        <>
-          <h2>User Details</h2>
-          <p>User ID: {id}</p>
-          <span>{dataForDetail?.original_title}</span>
-          <span>{dataForDetail?.overview}</span>
-          <span>{dataForDetail?.release_date}</span>
-          <div>
-            <ul>
-              {dataForDetail &&
-                dataForDetail.genres &&
-                dataForDetail?.genres.map((item: any) => {
-                  return <li>{item.name}</li>;
-                })}
-            </ul>
-          </div>
-          <img
-            style={{
-              width: "440px",
-              height: "300px",
-            }}
-            src={`https://image.tmdb.org/t/p/original/${dataForDetail?.backdrop_path}`}
-          />
-        </>
+        <Container>
+          <LoadingComponent loading={dataForDetail.loading} />
+          <ContainerImg>
+            <img
+              src={`https://image.tmdb.org/t/p/original/${dataForDetail?.backdrop_path}`}
+            />
+          </ContainerImg>
+
+          <ContainerInfo>
+            <SpanDetail>{dataForDetail?.original_title}</SpanDetail>
+            <SpanDetail>{dataForDetail?.overview}</SpanDetail>
+            <SpanDetail>{dataForDetail?.release_date}</SpanDetail>
+            <ContainerGender>
+              <SpanDetail>Generos</SpanDetail>
+              <div>
+                {dataForDetail &&
+                  dataForDetail.genres &&
+                  dataForDetail?.genres.map((item: any) => {
+                    return <span>-{item.name}</span>;
+                  })}
+              </div>
+            </ContainerGender>
+          </ContainerInfo>
+        </Container>
       )}
     </div>
   );

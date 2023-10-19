@@ -7,10 +7,9 @@ export const useInfiniteScroll = (callback: () => void) => {
     if (
       !isFetching &&
       window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight 
+        document.documentElement.offsetHeight
     ) {
-      window.scrollTo(0, window.scrollY - 5);
-
+      window.scrollTo(0, window.scrollY - 100);
       setIsFetching(true);
     }
   };
@@ -30,8 +29,8 @@ export const useInfiniteScroll = (callback: () => void) => {
 
   useEffect(() => {
     if (isFetching) {
-      callback();
       setIsFetching(false);
+      callback();
     }
   }, [isFetching, callback]);
 };

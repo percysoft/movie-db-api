@@ -8,6 +8,9 @@ export const SearchContainer = styled.div`
   border: 1px solid ${COLORS.WHITE};
   border-radius: 5px;
   padding: 5px;
+  border: 1px solid ${COLORS.BLACK};
+  width: 50%;
+  margin: 0 auto;
 `;
 
 export const SearchInput = styled.input`
@@ -15,7 +18,7 @@ export const SearchInput = styled.input`
   margin-left: 5px;
   flex: 1;
   background: transparent;
-  color: ${COLORS.WHITE};
+  color: ${COLORS.BLACK};
   &:focus {
     outline: none;
   }

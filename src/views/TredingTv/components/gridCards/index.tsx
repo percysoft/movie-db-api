@@ -1,3 +1,4 @@
+import { EmptyData } from "../../../../components/EmptyData";
 import { CardComponent } from "../../../../components/cardComponent";
 import { GridContainerCards } from "../../../../layout/containerCards";
 
@@ -7,6 +8,10 @@ export interface IItemGridCards {
 }
 
 export const GridCardsTvSHows = ({ listMovie }: any) => {
+  if (listMovie.length == 0) {
+    return <EmptyData />;
+  }
+
   return (
     <GridContainerCards>
       {listMovie &&
