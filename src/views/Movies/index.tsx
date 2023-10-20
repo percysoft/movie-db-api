@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { LoadingComponent } from "../../components/loader";
 import { SearchComponent } from "../../components/searchComponent";
-import { GridCardsMovies } from "./components/gridCards";
+import { GridCardsMovies } from "./components/gridCardsMovie";
 import { useInfiniteScroll } from "../../hooks/useScrollInfinite";
 import { Container } from "./index.style";
 import { useFetchMovie } from "./components/hook/useMovie";

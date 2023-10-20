@@ -1,21 +1,21 @@
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 
-const axiosInstance = (): AxiosInstance => {
-  let apiEnv: string | undefined = process.env.REACT_APP_MOVIE
-    ? process.env.REACT_APP_MOVIE
-    : undefined;
+const createAxiosInstance = () => {
+  const apiEnv = process.env.REACT_APP_MOVIE;
 
-  if (apiEnv === undefined || apiEnv === null) {
+  if (!apiEnv) {
     throw new Error("API environment not found");
   }
 
-  return axios.create({
-    baseURL: `${apiEnv}`,
+  const instance = axios.create({
+    baseURL: apiEnv,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     },
   });
+
+  return instance;
 };
 
-export default axiosInstance;
+export default createAxiosInstance;

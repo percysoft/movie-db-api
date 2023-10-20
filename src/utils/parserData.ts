@@ -1,4 +1,4 @@
-import { IItemGridCards } from "../views/TredingTv/components/gridCards";
+import { IItemGridCards } from "../views/TredingTv/components/gridCardsTv";
 
 export const parserDataCardTvShow = (data: IItemGridCards[]) => {
   let newData = [] as any;

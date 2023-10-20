@@ -5,6 +5,7 @@ import { getMovieDetailRequest } from "../../redux/actions/movie";
 import { ErrorComponent } from "../../components/errorComponent";
 import {
   Container,
+  ContainerDashboard,
   ContainerGender,
   ContainerImg,
   ContainerInfo,
@@ -33,7 +34,7 @@ export const DashboardDetailComponent = () => {
     setIsLoading(false);
   };
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <ContainerDashboard>
       {movie.error ? (
         <ErrorComponent />
       ) : (
@@ -70,6 +71,6 @@ export const DashboardDetailComponent = () => {
           </ContainerInfo>
         </Container>
       )}
-    </div>
+    </ContainerDashboard>
   );
 };

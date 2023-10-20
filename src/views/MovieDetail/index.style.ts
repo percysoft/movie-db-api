@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { COLORS } from "../../constant/colors";
 
+export const ContainerDashboard = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

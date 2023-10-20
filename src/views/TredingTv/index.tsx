@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DateComponent } from "../../components/dateComponent";
-import { GridCardsTvSHows } from "./components/gridCards";
+import { GridCardsTvSHows } from "./components/gridCardsTv";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearDataQuery,
@@ -17,7 +17,7 @@ export const TrendingTvComponent = () => {
   const { tvShows } = useSelector((state: any) => state);
 
   const [page, setPage] = useState(1);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export const TrendingTvComponent = () => {
               }}
             />
           </span>
-          <GridCardsTvSHows listMovie={parserDataCardTvShow(data)} />
+          <GridCardsTvSHows listTv={parserDataCardTvShow(data)} />
         </>
       )}
     </div>

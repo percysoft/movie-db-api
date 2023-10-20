@@ -1,6 +1,6 @@
 import { LayoutComponent } from "../views/layout";
-import { DashboardComponent } from "../views/Dashboard";
-import { DashboardDetailComponent } from "../views/DashboardDetail";
+import { DashboardComponent } from "../views/Movies";
+import { DashboardDetailComponent } from "../views/MovieDetail";
 import { TrendingTvComponent } from "../views/TredingTv";
 import { ROUTES } from "../constant/routes";
 
