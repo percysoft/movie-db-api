@@ -27,6 +27,7 @@ export const ContainerImg = styled.div`
   flex-direction: column;
   justify-content: center;
   box-shadow: ${COLORS.BOX_SHADOW};
+  position: relative;
   @media (min-width: 768px) {
     width: 40%;
     display: flex;
@@ -88,4 +89,15 @@ export const SpanDetail = styled.h3`
   padding: 10px;
   margin: 0;
   font-weight: bold;
+`;
+
+export const ContainerLoad = styled.div`
+  position: absolute;
+  background: white;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 `;

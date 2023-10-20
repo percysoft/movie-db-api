@@ -52,3 +52,14 @@ export const ContainerInfo = styled.div`
   justify-content: center;
   width: 100%;
 `;
+
+export const ContainerLoad = styled.div`
+  position: absolute;
+  background: white;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+`;

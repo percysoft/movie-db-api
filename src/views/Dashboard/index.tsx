@@ -25,7 +25,6 @@ export const DashboardComponent = () => {
   });
 
   const getValueInput = (e: string) => {
-    console.log(e,'e')
     if (timer) {
       clearTimeout(timer);
     }

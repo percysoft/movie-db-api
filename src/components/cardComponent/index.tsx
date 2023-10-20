@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   CardContainer,
   CardImage,
@@ -5,7 +6,9 @@ import {
   CardTitle,
   ContainerCardImage,
   ContainerInfo,
+  ContainerLoad,
 } from "./index.style";
+import { Loader } from "../loader";
 
 interface IICardComponent {
   title: string;
@@ -20,10 +23,20 @@ export const CardComponent = ({
   handleCard,
   subtitle,
 }: IICardComponent) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
   return (
     <CardContainer onClick={handleCard} data-testid="card-component">
       <ContainerCardImage>
-        <CardImage src={imageUrl} alt="card" />
+        {isLoading && (
+          <ContainerLoad>
+            <Loader loading={true} />
+          </ContainerLoad>
+        )}
+        <CardImage src={imageUrl} alt="card" onLoad={handleImageLoad} />
       </ContainerCardImage>
       <ContainerInfo>
         {title && <CardTitle>{title}</CardTitle>}

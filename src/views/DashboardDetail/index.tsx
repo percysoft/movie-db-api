@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetailRequest } from "../../redux/actions/movie";
@@ -8,9 +8,10 @@ import {
   ContainerGender,
   ContainerImg,
   ContainerInfo,
+  ContainerLoad,
   SpanDetail,
 } from "./index.style";
-import { LoadingComponent } from "../../components/loader";
+import { Loader, LoadingComponent } from "../../components/loader";
 import { CONSTANS } from "../../constant/constans";
 
 interface IOption {
@@ -23,11 +24,14 @@ export const DashboardDetailComponent = () => {
 
   const params = useParams();
   const { id } = params;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     dispatch(getMovieDetailRequest(Number(id)));
   }, [id]);
-
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {movie.error ? (
@@ -36,8 +40,14 @@ export const DashboardDetailComponent = () => {
         <Container>
           <LoadingComponent loading={dataForDetail.loading} />
           <ContainerImg>
+            {isLoading && (
+              <ContainerLoad>
+                <Loader loading={true} />
+              </ContainerLoad>
+            )}
             <img
               src={`${CONSTANS.URL_IMAGE}/${dataForDetail?.backdrop_path}`}
+              onLoad={handleImageLoad}
             />
           </ContainerImg>
 
