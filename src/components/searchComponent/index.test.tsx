@@ -1,25 +1,30 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { SearchComponent } from "./index";
+import { render, fireEvent } from '@testing-library/react';
+import { SearchComponent } from './index';
 
-test("renders search component", () => {
-  const mockHandleButton = jest.fn();
-  const mockGetValue = jest.fn();
+describe('SearchComponent', () => {
+  it('should render the component', () => {
+    const { getByPlaceholderText } = render(<SearchComponent />);
+    const inputElement = getByPlaceholderText('Buscar...');
+    expect(inputElement).toBeInTheDocument();
+  });
 
-  render(
-    <SearchComponent
-      placeholder="Buscar"
-      textButton="Buscar"
-      handleButton={mockHandleButton}
-      getValue={mockGetValue}
-    />
-  );
+  it('should call handleButton on button click', () => {
+    const handleButton = jest.fn();
+    const { getByText } = render(
+      <SearchComponent handleButton={handleButton} showButton={true} />
+    );
+    const buttonElement = getByText('Buscar');
+    fireEvent.click(buttonElement);
+    expect(handleButton).toHaveBeenCalledTimes(1);
+  });
 
-  const input = screen.getByPlaceholderText("Buscar");
-  const button = screen.getByText("Buscar");
-
-  fireEvent.change(input, { target: { value: "ironman" } });
-  fireEvent.click(button);
-
-  expect(mockGetValue).toHaveBeenCalledWith("ironman");
-  expect(mockHandleButton).toHaveBeenCalled();
+  it('should call getValue with the input value on change', () => {
+    const getValue = jest.fn();
+    const { getByPlaceholderText } = render(
+      <SearchComponent getValue={getValue} />
+    );
+    const inputElement = getByPlaceholderText('Buscar...');
+    fireEvent.change(inputElement, { target: { value: 'example' } });
+    expect(getValue).toHaveBeenCalledWith('example');
+  });
 });

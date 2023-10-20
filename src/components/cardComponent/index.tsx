@@ -21,7 +21,7 @@ export const CardComponent = ({
   subtitle,
 }: IICardComponent) => {
   return (
-    <CardContainer onClick={handleCard}>
+    <CardContainer onClick={handleCard} data-testid="card-component">
       <ContainerCardImage>
         <CardImage src={imageUrl} alt="card" />
       </ContainerCardImage>

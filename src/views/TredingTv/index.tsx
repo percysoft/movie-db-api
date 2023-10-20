@@ -37,10 +37,6 @@ export const TrendingTvComponent = () => {
   }, [date]);
 
   useEffect(() => {
-    console.log(parserDataCardTvShow(tvShows.data), "datadata");
-  }, [tvShows]);
-
-  useEffect(() => {
     if (date.length == 0) {
       setData(tvShows.data);
     } else {
@@ -58,7 +54,6 @@ export const TrendingTvComponent = () => {
           <span>
             <DateComponent
               getValue={(e: any) => {
-                console.log(e, "00000");
                 dispatch(clearDataQuery());
                 setPage(1);
                 setDate(e);

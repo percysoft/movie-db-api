@@ -5,8 +5,8 @@ interface ISearchComponent {
   type?: string;
   placeholder?: string;
   textButton?: string;
-  handleButton: () => void;
-  getValue: (value: string) => void;
+  handleButton?: () => void;
+  getValue?: (value: string) => void ;
   showButton?: boolean;
 }
 export const SearchComponent = ({
@@ -14,7 +14,7 @@ export const SearchComponent = ({
   placeholder = "Buscar...",
   textButton = "Buscar",
   handleButton = () => {},
-  getValue,
+  getValue = () => {},
   showButton = false,
 }: ISearchComponent) => {
   const [searchInput, setSearchInput] = useState("");

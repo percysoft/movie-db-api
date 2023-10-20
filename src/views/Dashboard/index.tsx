@@ -6,10 +6,7 @@ import { GridCardsMovies } from "./components/gridCards";
 import { useInfiniteScroll } from "../../hooks/useScrollInfinite";
 import { Container } from "./index.style";
 import { useFetchMovie } from "./components/hook/useMovie";
-import {
-  clearDataQuery,
-  getMovieDetailRequest,
-} from "../../redux/actions/movie";
+import { clearDataQuery } from "../../redux/actions/movie";
 import { ErrorComponent } from "../../components/errorComponent";
 
 export const DashboardComponent = () => {

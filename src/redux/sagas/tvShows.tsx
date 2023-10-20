@@ -52,7 +52,6 @@ export function* getTvShowsForQuery(
 ): Generator<any, any, any> {
   const axiosInstanceService: AxiosInstance = axiosInstance();
   yield put(getTvShowForIdRequest(value, page));
-  console.log("lanzo");
   try {
     const response = yield call(
       axiosInstanceService.get,
@@ -61,7 +60,6 @@ export function* getTvShowsForQuery(
     const currentResults: any[] = yield select(
       (state: any) => state.tvShows.dataForQuery
     );
-    console.log(currentResults, "currentResultscurrentResults");
     if (currentResults.length == 0) {
       yield put(getTvShowForIdSuccess(response.data.results));
     } else {

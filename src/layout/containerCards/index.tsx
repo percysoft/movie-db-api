@@ -1,7 +1,7 @@
 import { CardGrid } from "./index.style";
 
 interface IItemGridCards {
-  children: any;
+  children: React.ReactElement;
 }
 
 export const GridContainerCards = ({ children }: IItemGridCards) => {

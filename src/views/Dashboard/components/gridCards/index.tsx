@@ -1,16 +1,17 @@
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { EmptyData } from "../../../../components/EmptyData";
 import { CardComponent } from "../../../../components/cardComponent";
 import { GridContainerCards } from "../../../../layout/containerCards";
-import { useNavigate } from "react-router-dom";
 import { clearDataDetail } from "../../../../redux/actions/movie";
+import { CONSTANS } from "../../../../constant/constans";
 interface IItemGridCards {
   id: number;
   title: string;
   poster_path: string;
 }
 
-export const GridCardsMovies = ({ listMovie, handleCard }: any) => {
+export const GridCardsMovies = ({ listMovie }: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,7 +31,7 @@ export const GridCardsMovies = ({ listMovie, handleCard }: any) => {
             <CardComponent
               key={`${item.title}-${key}`}
               title={item.title}
-              imageUrl={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              imageUrl={`${CONSTANS.URL_IMAGE}/${item.poster_path}`}
               handleCard={() => redirectDetail(item.id)}
             />
           );

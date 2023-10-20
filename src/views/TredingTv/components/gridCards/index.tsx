@@ -1,5 +1,6 @@
 import { EmptyData } from "../../../../components/EmptyData";
 import { CardComponent } from "../../../../components/cardComponent";
+import { CONSTANS } from "../../../../constant/constans";
 import { GridContainerCards } from "../../../../layout/containerCards";
 
 export interface IItemGridCards {
@@ -20,7 +21,7 @@ export const GridCardsTvSHows = ({ listMovie }: any) => {
             <CardComponent
               key={`${item.title}-${key}`}
               title={item.title}
-              imageUrl={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+              imageUrl={`${CONSTANS.URL_IMAGE}/${item.poster_path}`}
             />
           );
         })}

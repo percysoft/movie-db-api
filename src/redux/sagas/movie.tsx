@@ -64,7 +64,6 @@ export function* getMovieForQuery(
     const currentResults: any[] = yield select(
       (state: any) => state.movie.dataForQuery
     );
-    console.log(currentResults, "currentResultscurrentResults");
     if (currentResults.length == 0) {
       yield put(getMovieForIdSuccess(response.data.results));
     } else {
@@ -95,7 +94,6 @@ export function* getDetailMovie(movieId: number): Generator<any, any, any> {
       axiosInstanceService.get,
       `movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
-    console.log(response.data, "responseeeeeeeeeeeeee");
     yield put(getMovieDetailSuccess(response.data));
   } catch (error) {
     const err = error as AxiosError;

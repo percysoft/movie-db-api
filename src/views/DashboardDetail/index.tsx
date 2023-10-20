@@ -11,6 +11,7 @@ import {
   SpanDetail,
 } from "./index.style";
 import { LoadingComponent } from "../../components/loader";
+import { CONSTANS } from "../../constant/constans";
 
 export const DashboardDetailComponent = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export const DashboardDetailComponent = () => {
           <LoadingComponent loading={dataForDetail.loading} />
           <ContainerImg>
             <img
-              src={`https://image.tmdb.org/t/p/original/${dataForDetail?.backdrop_path}`}
+              src={`${CONSTANS.URL_IMAGE}/${dataForDetail?.backdrop_path}`}
             />
           </ContainerImg>
 

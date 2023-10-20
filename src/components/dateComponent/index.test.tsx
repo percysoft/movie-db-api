@@ -2,23 +2,25 @@ import { render, fireEvent } from "@testing-library/react";
 import { DateComponent } from "./index";
 
 describe("DateComponent", () => {
-  test("renders with label", () => {
+  it("should render the component", () => {
     const mockGetValue = jest.fn();
-    const { getByText } = render(
-      <DateComponent label="Seleccionar fecha" getValue={mockGetValue} />
+    const { getByText, getByPlaceholderText } = render(
+      <DateComponent getValue={mockGetValue} />
     );
-    expect(getByText("Seleccionar fecha")).toBeInTheDocument();
+    const labelElement = getByText("Seleccionar fecha");
+    const placeholderElement = getByPlaceholderText("YYYY-MM-DD");
+    expect(labelElement).toBeInTheDocument();
+    expect(placeholderElement).toBeInTheDocument();
   });
 
-  test("handles date change", () => {
+  it("should call getValue with the selected date", () => {
     const mockGetValue = jest.fn();
     const { getByPlaceholderText } = render(
-      <DateComponent label="Seleccionar fecha" getValue={mockGetValue} />
+      <DateComponent getValue={mockGetValue} />
     );
-
-    const dateInput = getByPlaceholderText("Fecha");
-    fireEvent.change(dateInput, { target: { value: "2023-01-01" } });
-
-    expect(mockGetValue).toHaveBeenCalledWith(new Date("2023-01-01"));
+    const inputElement = getByPlaceholderText("YYYY-MM-DD");
+    fireEvent.change(inputElement, { target: { value: "2023-10-19" } });
+    const date = new Date("2023-10-19");
+    expect(mockGetValue).toHaveBeenCalledWith(date);
   });
 });
