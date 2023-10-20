@@ -4,6 +4,7 @@ import {
   ButtonOption,
   ContainerButonOption,
   ContainerHeader,
+  LogoImg,
 } from "./index.style";
 import { ROUTES } from "../../constant/routes";
 import { CONSTANS } from "../../constant/constans";
@@ -19,7 +20,7 @@ export const LayoutComponent = () => {
   return (
     <div>
       <ContainerHeader>
-        <img style={{ width: "200px" }} src={CONSTANS.URL_ICON} />
+        <LogoImg src={CONSTANS.URL_ICON} />
         <ContainerButonOption>
           <ButtonOption
             active={isActive(ROUTES.MOVIES.url)}

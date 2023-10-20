@@ -24,3 +24,7 @@ export const ButtonOption = styled.button<ButtonOptionProps>`
   border-bottom: ${(props) =>
     props.active ? `3px solid ${COLORS.BLACK}` : "none"};
 `;
+
+export const LogoImg = styled.img`
+  width: "200px";
+`;
