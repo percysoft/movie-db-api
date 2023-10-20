@@ -3,7 +3,7 @@ import { IItemGridCards } from "../views/TredingTv/components/gridCards";
 export const parserDataCardTvShow = (data: IItemGridCards[]) => {
   let newData = [] as any;
   data &&
-    data.map((item: any) => {
+    data.forEach((item: any) => {
       newData.push({
         title: item.name,
         poster_path: item.poster_path,

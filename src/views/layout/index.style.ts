@@ -26,5 +26,5 @@ export const ButtonOption = styled.button<ButtonOptionProps>`
 `;
 
 export const LogoImg = styled.img`
-  width: "200px";
+  width: 200px;
 `;

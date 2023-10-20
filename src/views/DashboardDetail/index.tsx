@@ -13,6 +13,9 @@ import {
 import { LoadingComponent } from "../../components/loader";
 import { CONSTANS } from "../../constant/constans";
 
+interface IOption {
+  name: string;
+}
 export const DashboardDetailComponent = () => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state: any) => state);
@@ -47,8 +50,10 @@ export const DashboardDetailComponent = () => {
               <div>
                 {dataForDetail &&
                   dataForDetail.genres &&
-                  dataForDetail?.genres.map((item: any) => {
-                    return <span>-{item.name}</span>;
+                  dataForDetail?.genres.map((item: IOption, key: string) => {
+                    return (
+                      <span key={`${item.name}-${key}`}>-{item.name}</span>
+                    );
                   })}
               </div>
             </ContainerGender>
